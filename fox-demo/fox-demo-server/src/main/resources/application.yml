@@ -1,0 +1,38 @@
+server:
+    port: 9095
+#
+spring:
+  profiles:
+      active: dev
+  application:
+      name: fox-demo-server
+# \u65E5\u5FD7
+logging:
+  config: classpath:logback-spring.xml
+  file: logs/fox-demo-service.log
+
+
+---
+# \u5F00\u53D1\u73AF\u5883\u914D\u7F6E
+spring:
+  profiles: dev
+  cloud:
+    config:
+      name: fox-config
+      profile: server-default,client-eureka-dev,demo-database-dev
+      uri: http://localhost:9000
+thirdpay:
+  test:
+    open: true
+---
+# \u6D4B\u8BD5\u73AF\u5883\u914D\u7F6E
+spring:
+  profiles: test
+  cloud:
+    config:
+      name: fox-config
+      profile: server-default,client-eureka-dev,demo-database-dev
+      uri: http://loclahost:9000
+thirdpay:
+  test:
+    open: true

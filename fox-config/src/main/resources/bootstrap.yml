@@ -1,0 +1,22 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: fox-config
+  profiles:
+    active:
+    - native
+  cloud:
+    config:
+      name: fox-config
+      enabled: false
+      server:
+        health:
+          enabled: false
+     #git.uri: file://${user.home}/config-repo  # 远程配置
+     #svn.
+logging:
+  file: logs/bespoke-config.log
+  pattern:
+    console: '[ %-5level] [%date{yyyy-MM-dd HH:mm:ss}] %logger{96} [%line] - %msg%n'
+    file: '[ %-5level] [%date{yyyy-MM-dd HH:mm:ss}] %logger{96} [%line] - %msg%n'

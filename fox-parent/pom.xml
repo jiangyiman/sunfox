@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sun.fox.parent</groupId>
+	<artifactId>fox-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>fox-parent</name>
+	<description>Demo project for parent</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.6.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Dalston.SR2</spring-cloud.version>
+		<java.version>1.8</java.version>
+		<spring.boot.admin.version>1.5.1</spring.boot.admin.version>
+		<spring.boot.version>${project.parent.version}</spring.boot.version>
+		<google.gson>2.8.0</google.gson>
+		<druid.version>1.0.29</druid.version>
+		<mybatis.version>1.3.0</mybatis.version>
+		<pagehelper.version>4.1.6</pagehelper.version>
+		<fastjson.version>1.2.31</fastjson.version>
+		<persistence.version>1.0.2</persistence.version>
+		<tk.mybatis.version>3.3.9</tk.mybatis.version>
+		<fileupload.version>1.3.1</fileupload.version>
+		<hikaricp.version>2.6.1</hikaricp.version>
+		<mysql.version>5.1.39</mysql.version>
+		<fox.framework.version>3.0.4-SNAPSHOT</fox.framework.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

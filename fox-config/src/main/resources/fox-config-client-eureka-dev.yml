@@ -1,0 +1,10 @@
+########## 客户端配置注册中心 ##########
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7997/eureka/
+
+
+
