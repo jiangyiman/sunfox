@@ -9,9 +9,11 @@
     <packaging>pom</packaging>
 
     <modules>
+		<module>fox-framework</module>
         <module>fox-config</module>
         <module>fox-discovery</module>
         <module>fox-demo</module>
+
     </modules>
 
 	<name>sunfox</name>
