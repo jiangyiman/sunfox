@@ -1,0 +1,2 @@
+# 配置启动类
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.sun.fox.fk.swagger.SwaggerAutoInitBean
