@@ -17,13 +17,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-core</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-core</artifactId>
             <version>RELEASE</version>
         </dependency>
     </dependencies>

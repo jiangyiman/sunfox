@@ -12,6 +12,6 @@
     <groupId>com.sun.fox.framework.pay</groupId>
     <artifactId>fox-framework-pay</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
 
 </project>

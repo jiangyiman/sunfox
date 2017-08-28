@@ -28,7 +28,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: demo-database-dev,eureka-dev
+      profile: demo-database-dev,eureka-dev,default-dev
       uri: http://localhost:9000
 
 

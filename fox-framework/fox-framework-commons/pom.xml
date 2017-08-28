@@ -12,6 +12,6 @@
     <groupId>com.sun.fox.framework.commons</groupId>
     <artifactId>fox-framework-commons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
 
 </project>

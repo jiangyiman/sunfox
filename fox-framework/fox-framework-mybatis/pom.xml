@@ -12,6 +12,6 @@
     <groupId>com.sun.fox.framework.mybatis</groupId>
     <artifactId>fox-framework-mybatis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
 
 </project>

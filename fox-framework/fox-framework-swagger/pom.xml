@@ -12,6 +12,7 @@
     <groupId>com.sun.fox.framework.swagger</groupId>
     <artifactId>fox-framework-swagger</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <springfox.version>2.6.1</springfox.version>
@@ -39,4 +40,5 @@
             <version>${springfox.version}</version>
         </dependency>
     </dependencies>
+
 </project>

@@ -25,7 +25,7 @@ public class DemoController implements DemoClient {
     @Override
     public DemoDto getDemoObj() {
 
-       // swaggerAutoConfig.getDefual();
+        swaggerAutoConfig.getDefual();
         return demoService.getDemoObj();
     }
 }
