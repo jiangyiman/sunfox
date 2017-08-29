@@ -1,30 +1,27 @@
 ########## Swagger ##########
 swagger:
   enabled: true
-  pathmapping: api # 访问地址
-  isgroup: true
+  engroup: true
   defual: # 此配置用来描述分组接口所要展示的信息
+    group: demo_gruop
     title: API接口文档
-    description: 测试Demo
+    description: 测试Demo111
     license: The Apache License, Version 2.0(测试)
     licenseUrl: https://my.oschina.net/maoru/blog
-    termsOfServiceUrl:
+    termsOfServiceUrl: https://my.oschina.net/maoru/blog
     name: maoru
     url: https://my.oschina.net/maoru/blog
     email: maoru.jiang@gmail.com
   docket:
-    测试接口（Demo）:
+    Demo1:
       basePackage: com.sun.fox.demo.server.foxdemoserver.demo.controller
       title: Demo接口文档
       version: 1.0.0
       name: maoru
       email: maoru.jiang@gmail.com
-    测试接口（1）:
+    Demo2:
       basePackage: com.sun.fox.demo.server.foxdemoserver.demo.controller
       title: Demo(2)接口文档
       version: 1.0.1
       name: maoru2
       email: maoru.jiang2@gmail.com
-
-
-

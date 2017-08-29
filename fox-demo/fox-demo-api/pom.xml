@@ -14,7 +14,9 @@
         <artifactId>sunfox</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
+    <properties>
+        <swagger.annotations.version>1.5.10</swagger.annotations.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -23,6 +25,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.annotations.version}</version>
         </dependency>
     </dependencies>
 

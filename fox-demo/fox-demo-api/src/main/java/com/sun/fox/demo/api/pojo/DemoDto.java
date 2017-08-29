@@ -1,10 +1,17 @@
 package com.sun.fox.demo.api.pojo;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Demo用户信息")
 public class DemoDto {
 
+    @ApiModelProperty(value = "用户id")
     private String id;
+    @ApiModelProperty(value = "用户Name")
     private String name;
+    @ApiModelProperty(value = "用户爱好")
     private String love;
 
     public String getId() {

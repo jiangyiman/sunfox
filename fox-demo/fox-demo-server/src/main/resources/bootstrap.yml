@@ -6,6 +6,8 @@ spring:
     name: sunfox-demo-server
   profiles:
     active: dev
+#  bootstrap:
+#    enabled: false
 #日志
 logging:
   config: classpath:logback-spring.xml
