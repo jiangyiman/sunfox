@@ -5,4 +5,14 @@ spring:
     password: root
     username: root
 
+############ Mybatis ###########
+mybatis:
+    type-aliases-package: com.fun.fox.**.mapper.mo
+    mapper-locations:
+        - classpath: com.fun.fox.**.mapper/*.xml
+mapper:
+    mappers:
+        - com.sun.fox.mybatis.base.mapper.BaseDaoMapper
+    not-empty: false
+    identity: MYSQL
 

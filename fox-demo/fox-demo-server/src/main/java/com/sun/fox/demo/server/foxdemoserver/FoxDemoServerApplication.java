@@ -1,5 +1,6 @@
 package com.sun.fox.demo.server.foxdemoserver;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 
+@MapperScan(basePackages = {"com.sun.fox.**.mapper"})
 @SpringBootApplication
 @EnableDiscoveryClient
 public class FoxDemoServerApplication {

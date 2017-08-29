@@ -21,7 +21,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: demo-database-dev,eureka-dev,default-dev
+      profile: demo-database-dev,eureka-dev,swagger-default-dev,mybatis-demo-dev
       uri: http://localhost:9000
 ---
 # 测试环境配置
@@ -30,7 +30,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: demo-database-dev,eureka-dev,default-dev
+      profile: demo-database-dev,eureka-dev,swagger-default-dev,mybatis-demo-dev
       uri: http://localhost:9000
 
 
