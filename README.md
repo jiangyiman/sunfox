@@ -31,4 +31,10 @@ RestAPI 推荐风格
 ---------------------------------------------------------------------------------------
   
          
-         
+ 开发描述  
+ 1. 新建api项目 建立client (client.java , clientvo(入), clientpto(出)) 服务接口
+ 2. 建立服务端 controll (Controller impl  Client)  
+ 3. 使用工具生成 Mybatis gergentor 相关 model mapper(mapper.java mapper.xml) 
+ 4. 复制配置文件更改配置文件名称 注意jar 包路径
+ 5. service 继承baseservice   impl继承 baseserviceimpl
+ 6. 注意controller 层配置文档 swagger      
