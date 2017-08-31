@@ -1,33 +1,21 @@
-package com.sun.fox.demo.api.pojo;
-
+package com.sun.fox.demo.api.pojo.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * 出餐
+ *  DemoUser 出参
  */
 @ApiModel(description = "Demo用户信息")
-public class DemoDto {
+public class DemoUserVo {
 
-
-    @ApiModelProperty(value = "用户id")
-    private String id;
     @NotEmpty(message = "用户名不能为空")
     @ApiModelProperty(value = "用户Name")
     private String name;
     @ApiModelProperty(value = "用户爱好")
     private String love;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

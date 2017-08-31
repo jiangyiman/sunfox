@@ -36,6 +36,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.3.5.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.fox.framework.commons</groupId>
+            <artifactId>fox-framework-commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

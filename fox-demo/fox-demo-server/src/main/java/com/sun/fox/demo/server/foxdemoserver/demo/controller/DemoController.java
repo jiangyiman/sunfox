@@ -1,9 +1,11 @@
 package com.sun.fox.demo.server.foxdemoserver.demo.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sun.fox.common.page.Page;
 import com.sun.fox.demo.api.client.DemoClient;
-import com.sun.fox.demo.api.pojo.DemoDto;
+import com.sun.fox.demo.api.pojo.dto.DemoUserDto;
+import com.sun.fox.demo.api.pojo.vo.DemoUserVo;
+import com.sun.fox.demo.server.foxdemoserver.demo.coverter.DemoUserCoverts;
 import com.sun.fox.demo.server.foxdemoserver.demo.model.DemoUsers;
 import com.sun.fox.demo.server.foxdemoserver.demo.service.DemoService;
 import io.swagger.annotations.Api;
@@ -32,16 +34,18 @@ public class DemoController implements DemoClient {
             @ApiImplicitParam(name = "size", value = "每页数量", required = true, defaultValue = "10", dataType = "int", paramType = "query"),
     })
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public DemoDto getPageDemoUser( Integer page, Integer size ) {
+    public Page<DemoUserDto> getPageDemoUser( @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+                                              @RequestParam(value = "size", required = false, defaultValue = "20") Integer size ) {
         PageInfo<DemoUsers> info = demoService.getPageDemoUser(page, size);
-        return null;
+        return new Page<>(DemoUserCoverts.DEMO_USER_TO_DTO.coverterAll(info.getList()),info.getTotal());
     }
 
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "新增Demo", notes = "demo add")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int addDemoUser( DemoDto vo ) {
-        return 0;
+    public int addDemoUser(@RequestBody DemoUserVo vo ) {
+        DemoUsers du = DemoUserCoverts.VO_TO_DEMO_USER.coverter(vo);
+        return demoService.insertSelective(du);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -51,7 +55,8 @@ public class DemoController implements DemoClient {
             @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
     })
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int deleteDemoUser( Long id ) {
+    public int deleteDemoUser(@PathVariable("id") Long id ) {
+
         return demoService.deleteByPrimaryKey(id);
     }
 
@@ -62,8 +67,10 @@ public class DemoController implements DemoClient {
             @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
     })
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int updateDemoUser( Long id, DemoDto vo ) {
-        return 0;
+    public int updateDemoUser(@PathVariable("id") Long id,@RequestBody DemoUserVo vo ) {
+        DemoUsers du = DemoUserCoverts.VO_TO_DEMO_USER.coverter(vo);
+        du.setId(id);
+        return demoService.updateByPrimaryKeySelective(du);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -73,9 +80,9 @@ public class DemoController implements DemoClient {
             @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
     })
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public DemoDto getDemoUserById( Long id ) {
+    public DemoUserDto getDemoUserById(@PathVariable("id") Long id ) {
         DemoUsers du = demoService.selectByPrimaryKey(id);
-        return null;
+        return DemoUserCoverts.DEMO_USER_TO_DTO.coverter(du);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -84,8 +91,8 @@ public class DemoController implements DemoClient {
             @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header")
     })
     @GetMapping(value = "/getdemo", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public DemoDto getDemoObj1() {
+    public DemoUserDto getDemoObj1() {
         DemoUsers du = demoService.getDemoObj();
-        return null;
+        return  DemoUserCoverts.DEMO_USER_TO_DTO.coverter(du);
     }
 }

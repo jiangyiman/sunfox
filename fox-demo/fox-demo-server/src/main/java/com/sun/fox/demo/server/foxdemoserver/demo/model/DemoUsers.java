@@ -20,7 +20,7 @@ public class DemoUsers extends BaseModel {
     /**
      * 爱好
      */
-    @Column(name="name")
+    @Column(name="love")
     private String love;
 
     /**

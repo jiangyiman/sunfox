@@ -12,3 +12,4 @@ public interface DemoUsersMapper extends BaseDaoMapper<DemoUsers> {
     //@Select("select *  from demo_users order by id desc")
     List<DemoUsers> getListDemoUSerPage();
 }
+
