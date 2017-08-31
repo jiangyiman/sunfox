@@ -1,11 +1,15 @@
 package com.sun.fox.demo.server.foxdemoserver.demo.service;
 
-import com.sun.fox.demo.api.pojo.DemoDto;
+import com.github.pagehelper.PageInfo;
+import com.sun.fox.demo.server.foxdemoserver.demo.model.DemoUsers;
+import com.sun.fox.mybatis.base.server.BaseService;
 
 /**
  * 获取测试信息
  */
-public interface DemoService {
+public interface DemoService extends BaseService<DemoUsers>{
 
-     DemoDto getDemoObj();
+     DemoUsers getDemoObj();
+
+     PageInfo<DemoUsers> getPageDemoUser( int page, int size);
 }

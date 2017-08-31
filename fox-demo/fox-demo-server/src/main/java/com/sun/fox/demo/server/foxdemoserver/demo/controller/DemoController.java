@@ -1,70 +1,91 @@
 package com.sun.fox.demo.server.foxdemoserver.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sun.fox.demo.api.client.DemoClient;
 import com.sun.fox.demo.api.pojo.DemoDto;
+import com.sun.fox.demo.server.foxdemoserver.demo.model.DemoUsers;
 import com.sun.fox.demo.server.foxdemoserver.demo.service.DemoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-@Api("DemoApi")
+@Api("DemoUser  API 增删改查")
 @RestController
-@RequestMapping("/demo")
+@RequestMapping("/demoUser")
 public class DemoController implements DemoClient {
 
 
     @Autowired
     private DemoService demoService;
 
-    @ApiOperation(value = "demo", notes = "查询")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "分页获取Demo用户数据", notes = "demo list query")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+            @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header"),
+            @ApiImplicitParam(name = "page", value = "页码", required = true, defaultValue = "1", dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "size", value = "每页数量", required = true, defaultValue = "10", dataType = "int", paramType = "query"),
     })
-    @GetMapping("/getdemo")
-    public DemoDto getDemoObj() {
-        return demoService.getDemoObj();
-    }
-    @ApiOperation(value = "demo", notes = "查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
-    })
-    @Override
-    public DemoDto getDemoObj1() {
-        return demoService.getDemoObj();
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public DemoDto getPageDemoUser( Integer page, Integer size ) {
+        PageInfo<DemoUsers> info = demoService.getPageDemoUser(page, size);
+        return null;
     }
 
-    @ApiOperation(value = "demo", notes = "查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
-    })
-    @Override
-    public DemoDto getDemoObj2() {
-        return demoService.getDemoObj();
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "新增Demo", notes = "demo add")
+    @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int addDemoUser( DemoDto vo ) {
+        return 0;
     }
-    @ApiOperation(value = "demo", notes = "查询")
+
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "依据id删除", notes = "demo delete")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+            @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header"),
+            @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
     })
-    @Override
-    public DemoDto getDemoObj3() {
-        return demoService.getDemoObj();
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int deleteDemoUser( Long id ) {
+        return demoService.deleteByPrimaryKey(id);
     }
-    @ApiOperation(value = "demo", notes = "查询")
+
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "依据id修改", notes = "demo update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+            @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header"),
+            @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
     })
-    @Override
-    public DemoDto getDemoObj4() {
-        return demoService.getDemoObj();
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int updateDemoUser( Long id, DemoDto vo ) {
+        return 0;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "依据Id查询Demo", notes = "demo query by  id")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header"),
+            @ApiImplicitParam(name = "id", value = "页码", required = true, dataType = "int", paramType = "path")
+    })
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public DemoDto getDemoUserById( Long id ) {
+        DemoUsers du = demoService.selectByPrimaryKey(id);
+        return null;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "测试demo", notes = "demo query test")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Token", required = true, dataType = "String", paramType = "header")
+    })
+    @GetMapping(value = "/getdemo", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public DemoDto getDemoObj1() {
+        DemoUsers du = demoService.getDemoObj();
+        return null;
     }
 }
