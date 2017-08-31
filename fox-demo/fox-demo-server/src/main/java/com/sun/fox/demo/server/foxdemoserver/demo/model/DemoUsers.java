@@ -8,8 +8,8 @@ public class DemoUsers extends BaseModel {
     /**
      * 用户ID
      */
-    @Id
-    private Long id;
+//    @Id
+//    private Long id;
 
     /**
      * 姓名
@@ -23,23 +23,6 @@ public class DemoUsers extends BaseModel {
     @Column(name="love")
     private String love;
 
-    /**
-     * 获取用户ID
-     *
-     * @return id - 用户ID
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * 设置用户ID
-     *
-     * @param id 用户ID
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     /**
      * 获取姓名

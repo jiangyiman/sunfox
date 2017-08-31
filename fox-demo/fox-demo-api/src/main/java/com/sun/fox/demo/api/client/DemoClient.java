@@ -28,7 +28,7 @@ public interface DemoClient {
      * @return
      */
     @PostMapping(value = "/demoUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    int addDemoUser(@RequestBody DemoUserVo vo);
+    DemoUserDto addDemoUser(@RequestBody DemoUserVo vo);
 
 
     /**

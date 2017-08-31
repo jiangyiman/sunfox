@@ -6,6 +6,6 @@ import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.MySqlMapper;
 
 @SuppressWarnings("rawtypes")
-public interface BaseDaoMapper<T> extends BaseMapper<T> ,IdsMapper<T>,MySqlMapper<T>,ConditionMapper<T> {
+public interface BaseDaoMapper<T> extends BaseMapper<T> ,IdsMapper<T>,MySqlMapper<T>,ConditionMapper<T> ,InsertRetKeyMapper<T>{
 
 }

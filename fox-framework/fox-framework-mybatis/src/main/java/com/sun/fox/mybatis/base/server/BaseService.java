@@ -1,8 +1,10 @@
 package com.sun.fox.mybatis.base.server;
 
+import com.sun.fox.mybatis.base.model.BaseModel;
+
 import java.util.List;
 
-public interface BaseService<T>{
+public interface BaseService<T extends BaseModel>{
     /**
      *  插入
      * @param record
@@ -25,13 +27,39 @@ public interface BaseService<T>{
     int insertList(List<T> recordList);
 
     /**
-     *  批量插入id自己输入
+     *  插入id自己输入
      * @param record
      * @return
      */
     int insertUseGeneratedKeys(T record);
 
+    /**
+     *  返回插入对象
+     * @param record
+     * @return
+     */
+    T insertRetObjSelective(T record);
 
+    /**
+     *  返回插入Id  未实现 可以在base Service 实现
+     * @param record
+     * @return
+     */
+    Long insertRetKeySelective(T record);
+
+    /**
+     *  返回插入Ids
+     * @param recordList
+     * @return
+     */
+    List<T> insertRetListObjSelective(List<T> recordList);
+
+    /**
+     *  返回插入Ids
+     * @param recordList
+     * @return
+     */
+    List<Long> insertRetListKeySelective(List<T> recordList);
     /**
      *  依据id更新
      * @param record

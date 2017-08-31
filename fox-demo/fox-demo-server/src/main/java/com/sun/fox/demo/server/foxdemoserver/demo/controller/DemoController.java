@@ -17,6 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Api("DemoUser  API 增删改查")
 @RestController
 @RequestMapping("/demoUser")
@@ -43,9 +46,17 @@ public class DemoController implements DemoClient {
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "新增Demo", notes = "demo add")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int addDemoUser(@RequestBody DemoUserVo vo ) {
+    public DemoUserDto addDemoUser(@RequestBody DemoUserVo vo ) {
         DemoUsers du = DemoUserCoverts.VO_TO_DEMO_USER.coverter(vo);
-        return demoService.insertSelective(du);
+       // demoService.insertRetKeySelective(du);
+        List<DemoUsers> list = new ArrayList<DemoUsers>();
+        list.add(du);
+        DemoUsers du1 = new DemoUsers();
+        du1.setLove("菜刀");
+        du1.setName("关羽");
+        list.add(du1);
+        demoService.insertRetListKeySelective(list);
+        return DemoUserCoverts.DEMO_USER_TO_DTO.coverter(du);
     }
 
     @ResponseStatus(HttpStatus.OK)
