@@ -1,0 +1,38 @@
+server:
+  port: 9098
+
+spring:
+  application:
+    name: sunfox-oauth
+  profiles:
+    active: dev
+#  bootstrap:
+#    enabled: false
+#日志
+logging:
+  config: classpath:logback-spring.xml
+  file: logs/sunfox-oauth.log
+
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  cloud:
+    config:
+      name: sunfox-config
+      profile: eureka-dev,oauth-database-dev
+      uri: http://localhost:9000
+---
+# 测试环境配置
+spring:
+  profiles: test
+  cloud:
+    config:
+      name: sunfox-config
+      profile: eureka-dev,oauth-database-dev
+      uri: http://localhost:9000
+
+
+
+
