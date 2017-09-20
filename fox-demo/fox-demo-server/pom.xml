@@ -21,17 +21,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-
-        <!-- MyBatis Generator -->
-        <mybatis.generator.version>1.3.2</mybatis.generator.version>
-        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-        <targetMapperPackage>com.wdcloud.fayu.mapper</targetMapperPackage>
-        <targetEntityPackage>com.wdcloud.fayu.entity</targetEntityPackage>
         <!-- tk.mybatis -->
         <tk.mybatis.version>3.4.3</tk.mybatis.version>
         <persistence.version>1.0</persistence.version>
         <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
         <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
+        <!-- MyBatis Generator -->
+        <mybatis.generator.version>1.3.2</mybatis.generator.version>
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>com.wdcloud.fayu.mapper</targetMapperPackage>
+        <targetEntityPackage>com.wdcloud.fayu.entity</targetEntityPackage>
     </properties>
 
     <dependencies>

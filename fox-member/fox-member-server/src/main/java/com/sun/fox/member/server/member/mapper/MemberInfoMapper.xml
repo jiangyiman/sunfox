@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sun.fox.member.server.member.mapper.MemberInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sun.fox.member.server.member.model.MemberInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="user_source" property="userSource" jdbcType="TINYINT" />
+    <result column="nike_name" property="nikeName" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pictures" property="userPictures" jdbcType="VARCHAR" />
+    <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+    <result column="active" property="active" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="BIGINT" />
+    <result column="laster_time" property="lasterTime" jdbcType="TIMESTAMP" />
+    <result column="upate_by" property="upateBy" jdbcType="BIGINT" />
+  </resultMap>
+</mapper>

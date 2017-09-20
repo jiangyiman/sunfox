@@ -3,16 +3,18 @@
 目录介绍
 
     sunfox  
-        fox-config       # spring cloud 配置中心    
-        fox-discovery    # spring cloud 注册中心   
+        fox-config:9000       # spring cloud 配置中心    
+        fox-discovery:8761    # spring cloud 注册中心   
         fox-framework  
             fox-framework-commons # 帮助类  建议每个项目都引用   
             fox-framework-mybatis # 操作数据库插件   
             fox-framework-swagger # api接口生成工具   
             fox-framework-pay  # 第三方快捷支付 如微信，支付宝   
-        fox-demo    
+        fox-demo:9095    
             fox-demo-api # 测试demoapi   
             fox-demo-server # 测试demoserver  服务
+        fox-oauth:9098
+        fox-member:9096    
          
          
 ------------------------------------------------------------------------------------
@@ -34,7 +36,7 @@ RestAPI 推荐风格
  开发描述  
  1. 新建api项目 建立client (client.java , clientvo(入), clientpto(出)) 服务接口
  2. 建立服务端 controll (Controller impl  Client)  
- 3. 使用工具生成 Mybatis gergentor 相关 model mapper(mapper.java mapper.xml) 
+ 3. 使用工具生成 Mybatis gergentor 相关 model mapper(mapper.java mapper.xml) -- mvn mybatis-generator:generate   
  4. 复制配置文件更改配置文件名称 注意jar 包路径
  5. service 继承baseservice   impl继承 baseserviceimpl
  6. 注意controller 层配置文档 swagger      

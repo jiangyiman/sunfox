@@ -26,17 +26,33 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * 声明TokenStore实现
+     * @return
+     */
     @Bean
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
 
+    /**
+     *  声明 ClientDetails实现
+     * @return
+     */
+    @Bean
+    public ClientDetailsService clientDetails() {
+        return new JdbcClientDetailsService(dataSource);
+    }
 
+    /**
+     * 配置框架应用上述实现
+     * @param endpoints
+     * @throws Exception
+     */
     @Override
     public void configure( AuthorizationServerEndpointsConfigurer endpoints ) throws Exception {
         endpoints.authenticationManager(authenticationManager);
         endpoints.tokenStore(tokenStore());
-
         // 配置TokenServices参数
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(endpoints.getTokenStore());
@@ -46,29 +62,6 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
         tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30)); // 30天
         endpoints.tokenServices(tokenServices);
 
-    }
-
-
-    @Override
-    public void configure( AuthorizationServerSecurityConfigurer oauthServer ) throws Exception {
-        //oauthServer.checkTokenAccess("isAuthenticated()");
-        oauthServer.checkTokenAccess("permitAll()");
-        oauthServer.allowFormAuthenticationForClients();
-    }
-
-    @Bean
-    public ClientDetailsService clientDetails() {
-        return new JdbcClientDetailsService(dataSource);
-    }
-
-    @Override
-    public void configure( ClientDetailsServiceConfigurer clients ) throws Exception {
-        clients.withClientDetails(clientDetails());
-/*        clients.inMemory()
-                .withClient("client")
-                .secret("secret")
-                .authorizedGrantTypes("authorization_code")
-                .scopes("app");*/
     }
 
 }
