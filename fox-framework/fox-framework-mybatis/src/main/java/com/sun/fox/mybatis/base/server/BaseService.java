@@ -113,5 +113,12 @@ public interface BaseService<T extends BaseModel>{
      */
     List<T> selectByIds(String ids);
 
+    /**
+     *  多条件查询单挑数据
+     * @param record
+     * @return
+     */
+    T selectOne(T record);
+
 
 }

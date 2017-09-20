@@ -113,10 +113,22 @@ public abstract class BaseServiceImpl<T extends BaseModel> implements BaseServic
     }
 
     @Override
-    public List<Long> insertRetListKeySelective(List<T> recordList){
+    public List<Long> insertRetListKeySelective( List<T> recordList ) {
         baseDaoMapper.insertRetListObjSelective(recordList);
         List<Long> list = recordList.stream().map(T::getId).collect(Collectors.toList());
-        return  list;
+        return list;
     }
+
+
+    /**
+     * 多条件查询单挑数据
+     *
+     * @param record
+     * @return
+     */
+    public T selectOne( T record ) {
+        return baseDaoMapper.selectOne(record);
+    }
+
 
 }
