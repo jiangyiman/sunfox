@@ -1,0 +1,1 @@
+http://localhost:9098/oauth/authorize?client_id=acme&response_type=code&redirect_uri=http://localhost:9096/resources/user

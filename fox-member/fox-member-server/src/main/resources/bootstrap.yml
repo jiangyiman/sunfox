@@ -21,7 +21,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: demo-database-dev,eureka-dev,swagger-default-dev
+      profile: oauth-client-dev,eureka-dev,swagger-default-dev,member-database-dev
       uri: http://localhost:9001
 ---
 # 测试环境配置
@@ -30,7 +30,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: demo-database-dev,eureka-dev,swagger-default-dev
+      profile: oauth-client-dev,eureka-dev,swagger-default-dev,member-database-dev
       uri: http://localhost:9001
 
 

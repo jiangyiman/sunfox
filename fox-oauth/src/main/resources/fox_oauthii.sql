@@ -1,26 +1,44 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50712
-Source Host           : localhost:3306
-Source Database       : fox_oauthii
+ Source Server         : jiangchao
+ Source Server Type    : MySQL
+ Source Server Version : 50505
+ Source Host           : localhost
+ Source Database       : alan-oauth
 
-Target Server Type    : MYSQL
-Target Server Version : 50712
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50505
+ File Encoding         : utf-8
 
-Date: 2017-09-11 13:52:08
+ Date: 03/14/2017 14:09:46 PM
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for clientdetails
+--  Table structure for `authorities`
+-- ----------------------------
+DROP TABLE IF EXISTS `authorities`;
+CREATE TABLE `authorities` (
+  `username` varchar(255) DEFAULT NULL,
+  `authority` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `authorities`
+-- ----------------------------
+BEGIN;
+INSERT INTO `authorities` VALUES ('reader', 'ROLE_USER'), ('writer', 'ROLE_USER');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `clientdetails`
 -- ----------------------------
 DROP TABLE IF EXISTS `clientdetails`;
 CREATE TABLE `clientdetails` (
-  `appId` varchar(256) NOT NULL,
+  `appId` varchar(128) NOT NULL,
   `resourceIds` varchar(256) DEFAULT NULL,
   `appSecret` varchar(256) DEFAULT NULL,
   `scope` varchar(256) DEFAULT NULL,
@@ -35,17 +53,13 @@ CREATE TABLE `clientdetails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of clientdetails
--- ----------------------------
-
--- ----------------------------
--- Table structure for oauth_access_token
+--  Table structure for `oauth_access_token`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_access_token`;
 CREATE TABLE `oauth_access_token` (
   `token_id` varchar(256) DEFAULT NULL,
   `token` blob,
-  `authentication_id` varchar(256) NOT NULL,
+  `authentication_id` varchar(128) NOT NULL,
   `user_name` varchar(256) DEFAULT NULL,
   `client_id` varchar(256) DEFAULT NULL,
   `authentication` blob,
@@ -54,11 +68,7 @@ CREATE TABLE `oauth_access_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_access_token
--- ----------------------------
-
--- ----------------------------
--- Table structure for oauth_approvals
+--  Table structure for `oauth_approvals`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_approvals`;
 CREATE TABLE `oauth_approvals` (
@@ -66,20 +76,16 @@ CREATE TABLE `oauth_approvals` (
   `clientId` varchar(256) DEFAULT NULL,
   `scope` varchar(256) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `expiresAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `lastModifiedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `expiresAt` datetime DEFAULT NULL,
+  `lastModifiedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_approvals
--- ----------------------------
-
--- ----------------------------
--- Table structure for oauth_client_details
+--  Table structure for `oauth_client_details`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_client_details`;
 CREATE TABLE `oauth_client_details` (
-  `client_id` varchar(256) NOT NULL,
+  `client_id` varchar(128) NOT NULL,
   `resource_ids` varchar(256) DEFAULT NULL,
   `client_secret` varchar(256) DEFAULT NULL,
   `scope` varchar(256) DEFAULT NULL,
@@ -94,28 +100,27 @@ CREATE TABLE `oauth_client_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_client_details
+--  Records of `oauth_client_details`
 -- ----------------------------
+BEGIN;
+INSERT INTO `oauth_client_details` VALUES ('acme', 'oauth2-resource', 'acmesecret', 'app', 'authorization_code', '', null, null, null, null, 'app'), ('client', 'oauth2-resource', 'secret', 'app', 'authorization_code', '', null, null, null, null, null), ('my-trusted-client', 'oauth2-resource', null, 'read', 'authorization_code', null, null, null, null, null, '');
+COMMIT;
 
 -- ----------------------------
--- Table structure for oauth_client_token
+--  Table structure for `oauth_client_token`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_client_token`;
 CREATE TABLE `oauth_client_token` (
   `token_id` varchar(256) DEFAULT NULL,
   `token` blob,
-  `authentication_id` varchar(256) NOT NULL,
+  `authentication_id` varchar(128) NOT NULL,
   `user_name` varchar(256) DEFAULT NULL,
   `client_id` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`authentication_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_client_token
--- ----------------------------
-
--- ----------------------------
--- Table structure for oauth_code
+--  Table structure for `oauth_code`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_code`;
 CREATE TABLE `oauth_code` (
@@ -124,11 +129,7 @@ CREATE TABLE `oauth_code` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_code
--- ----------------------------
-
--- ----------------------------
--- Table structure for oauth_refresh_token
+--  Table structure for `oauth_refresh_token`
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_refresh_token`;
 CREATE TABLE `oauth_refresh_token` (
@@ -138,5 +139,20 @@ CREATE TABLE `oauth_refresh_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_refresh_token
+--  Table structure for `users`
 -- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `enabled` char(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `users`
+-- ----------------------------
+BEGIN;
+INSERT INTO `users` VALUES ('reader', 'reader', 'Y'), ('writer', 'writer', 'Y');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
