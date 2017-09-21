@@ -6,9 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("fox-member-server")
+@FeignClient(name = "bespoke-member-server")
 public interface MemberInfoClient {
 
     @GetMapping(value = "/member_info/by_login_name", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    MemberInfoDto getMemberInfoByLoginName( @RequestParam("order_ids") String loginName);
+    MemberInfoDto getMemberInfoByLoginName( @RequestParam("login_name") String loginName );
 }

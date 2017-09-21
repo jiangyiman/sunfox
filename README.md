@@ -3,7 +3,7 @@
 目录介绍
 
     sunfox  
-        fox-config:9000       # spring cloud 配置中心    
+        fox-config:9001       # spring cloud 配置中心    
         fox-discovery:8761    # spring cloud 注册中心   
         fox-framework  
             fox-framework-commons # 帮助类  建议每个项目都引用   

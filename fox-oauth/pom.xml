@@ -24,43 +24,50 @@
 	</properties>
 
 	<dependencies>
+		<!-- 监控和管理生产环境的模块 -->
 		<dependency>
-			<groupId>com.sun.fox.framework.mybatis</groupId>
-			<artifactId>fox-framework-mybatis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-        <dependency>
-            <groupId>com.sun.fox.member.api</groupId>
-            <artifactId>fox-member-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
+		<!-- 客户端发现模块 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
+		<!-- Java HTTP 客户端开发的工具的模块 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+		<!-- 远程配置文件模块 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+		</dependency>
+		<!-- oauth2 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-security</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-oauth2</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-data</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-commons</artifactId>
+			<version>RELEASE</version>
 		</dependency>
-
+		<!-- 自定义模块 -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>com.sun.fox.member.api</groupId>
+			<artifactId>fox-member-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.fox.framework.mybatis</groupId>
+			<artifactId>fox-framework-mybatis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
     </dependencies>
 

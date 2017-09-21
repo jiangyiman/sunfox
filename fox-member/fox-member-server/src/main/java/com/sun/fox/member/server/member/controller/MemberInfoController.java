@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+
 @RequestMapping("/member_info")
 @EnableOAuth2Sso
+@RestController
 public class MemberInfoController implements MemberInfoClient {
 
     @Autowired
@@ -25,7 +26,7 @@ public class MemberInfoController implements MemberInfoClient {
 
 
     @GetMapping(value = "/by_login_name", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public MemberInfoDto getMemberInfoByLoginName( @RequestParam("order_ids") String loginName) {
+    public MemberInfoDto getMemberInfoByLoginName( @RequestParam("login_name") String loginName) {
         MemberInfo info = new MemberInfo();
         info.setLoginName(loginName);
         MemberInfo member = memberInfoService.selectOne(info);

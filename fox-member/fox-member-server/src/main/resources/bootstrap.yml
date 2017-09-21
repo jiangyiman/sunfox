@@ -22,7 +22,7 @@ spring:
     config:
       name: sunfox-config
       profile: demo-database-dev,eureka-dev,swagger-default-dev
-      uri: http://localhost:9000
+      uri: http://localhost:9001
 ---
 # 测试环境配置
 spring:
@@ -31,7 +31,7 @@ spring:
     config:
       name: sunfox-config
       profile: demo-database-dev,eureka-dev,swagger-default-dev
-      uri: http://localhost:9000
+      uri: http://localhost:9001
 
 
 
