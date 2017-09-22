@@ -54,16 +54,20 @@
 			<artifactId>spring-cloud-starter-oauth2</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-commons</artifactId>
 			<version>RELEASE</version>
 		</dependency>
-		<!-- 自定义模块 -->
 		<dependency>
-			<groupId>com.sun.fox.member.api</groupId>
-			<artifactId>fox-member-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- 自定义模块 -->
 		<dependency>
 			<groupId>com.sun.fox.framework.mybatis</groupId>
 			<artifactId>fox-framework-mybatis</artifactId>

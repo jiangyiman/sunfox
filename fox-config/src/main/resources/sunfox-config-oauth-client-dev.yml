@@ -1,12 +1,13 @@
 security:
-  oauth2:
-    client:
-      client-id: acme
-      client-secret: acmesecret
-      access-token-uri: http://localhost:9098/oauth/token
-      user-authorization-uri: http://localhost:9098/oauth/authorize
-    resource:
-      user-info-uri: http://localhost:9098/
+   oauth2:
+      resource:
+          token-info-uri: http://localhost:9098/oauth/check_token
+      client:
+          client-id: clientId
+          client-secret: secretId
+          user-authorization-uri: http://localhost:9098/oauth/authorize
+          access-token-uri: http://localhost:9098/oauth/token
+          grant-type: client_credentials
 
 logging:
   level:

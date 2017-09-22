@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-@RequestMapping("/member_info")
-@EnableOAuth2Sso
+
 @RestController
+@RequestMapping("/member_info")
 public class MemberInfoController implements MemberInfoClient {
 
     @Autowired

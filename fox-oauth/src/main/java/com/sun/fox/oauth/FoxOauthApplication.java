@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
-@SpringBootApplication()
-@EnableAutoConfiguration()
+@SpringBootApplication
+@EnableAutoConfiguration
 @EnableDiscoveryClient
+@EnableAuthorizationServer
 public class FoxOauthApplication {
 
 	public static void main(String[] args) {
