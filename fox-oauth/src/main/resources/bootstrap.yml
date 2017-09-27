@@ -1,6 +1,6 @@
 server:
-  port: 9098
-  //contextPath: /uaa
+  port: 8080
+  # contextPath: /uaa
 spring:
   application:
     name: sunfox-oauth
