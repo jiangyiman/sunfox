@@ -15,6 +15,7 @@
         <module>fox-demo</module>
         <module>fox-oauth</module>
         <module>fox-member</module>
+        <module>fox-uc</module>
     </modules>
 
     <name>sunfox</name>
