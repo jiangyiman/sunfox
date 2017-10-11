@@ -1,0 +1,39 @@
+server:
+  port: 9987
+
+spring:
+  application:
+    name: sunfox-uc-server
+  profiles:
+    active: dev
+#  bootstrap:
+#    enabled: false
+#日志
+logging:
+  config: classpath:logback-spring.xml
+  file: logs/sunfox-uc-server.log
+
+
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  cloud:
+    config:
+      name: sunfox-config
+      profile: eureka-dev,swagger-default-dev,uc-database-dev
+      uri: http://localhost:9001
+---
+# 测试环境配置
+spring:
+  profiles: test
+  cloud:
+    config:
+      name: sunfox-config
+      profile: eureka-dev,swagger-default-dev,uc-database-dev
+      uri: http://localhost:9001
+
+
+
+
