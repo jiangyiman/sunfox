@@ -12,5 +12,6 @@
     <groupId>com.sun.fox.uc</groupId>
     <artifactId>fox-uc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
 </project>

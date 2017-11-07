@@ -18,6 +18,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
 # 平台日志
 logging:
   file: logs/sunfox-config.log

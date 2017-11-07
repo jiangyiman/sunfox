@@ -23,13 +23,13 @@
         </commentGenerator>
         <!-- 数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/fox_members?useUnicode=true"
+                        connectionURL="jdbc:mysql://localhost:3306/fox_uc?useUnicode=true"
                         userId="root"
                         password="root"/>
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator
-                targetPackage="com.sun.fox.member.server.member.model"
-                targetProject="d:/sunfox/fox-member/fox-member-server/src/main/java" >
+                targetPackage="com.sun.fox.uc.server.model"
+                targetProject="d:/sunfox/fox-uc/fox-uc-server/src/main/java" >
                 <!-- 设置一个根对象，
                 如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
                 注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
@@ -42,14 +42,15 @@
 
         <!-- 生成的映射文件包名和位置 -->
         <sqlMapGenerator
-                targetPackage="com.sun.fox.member.server.member.mapper"
-                targetProject="d:/sunfox/fox-member/fox-member-server/src/main/java"/>
+                targetPackage="com.sun.fox.uc.server.mapper"
+                targetProject="d:/sunfox/fox-uc/fox-uc-server/src/main/java"/>
         <!-- 生成接口类的包名和位置 -->
-        <javaClientGenerator targetPackage="com.sun.fox.member.server.member.mapper"
-                             targetProject="d:/sunfox/fox-member/fox-member-server/src/main/java"
+        <javaClientGenerator targetPackage="com.sun.fox.uc.server.mapper"
+                             targetProject="d:/sunfox/fox-uc/fox-uc-server/src/main/java"
                              type="XMLMAPPER"/>
         <!-- 要生成的那些表 -->
-        <table tableName="member_info" domainObjectName="MemberInfo"
+        <!--, , , , , , , , , -->
+        <table tableName="uc_comp_org" domainObjectName="UcCompOrg"
                enableCountByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" enableUpdateByExample="true">
             <!--自生产主键 -->
@@ -59,6 +60,40 @@
             <!-- 指定列的java数据类型 -->
            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
         </table>
+        <table tableName="uc_company" domainObjectName="UcCompany"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_menu" domainObjectName="UcMenu"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_organization" domainObjectName="UcOrganization"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_resources" domainObjectName="UcResources"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_role_comp" domainObjectName="UcRoleComp"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_role_menu" domainObjectName="UcRoleMenu"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_role_org" domainObjectName="UcRoleOrg"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_role_user" domainObjectName="UcRoleUser"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_roles" domainObjectName="UcRoles"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_user" domainObjectName="UcUser"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+        <table tableName="uc_user_org" domainObjectName="UcUserOrg"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true"/>
+
     </context>
     <!-- mvn mybatis-generator:generate -->
 </generatorConfiguration>
