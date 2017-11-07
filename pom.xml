@@ -12,9 +12,6 @@
         <module>fox-framework</module>
         <module>fox-config</module>
         <module>fox-discovery</module>
-        <module>fox-demo</module>
-        <module>fox-oauth</module>
-        <module>fox-member</module>
         <module>fox-uc</module>
     </modules>
 
