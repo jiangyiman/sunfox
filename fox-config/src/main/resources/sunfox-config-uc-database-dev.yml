@@ -2,7 +2,7 @@
 #druid:
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/fox_uc?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/fox_uc?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
     password: root
     username: root
     # 使用druid数据源
@@ -21,3 +21,4 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+

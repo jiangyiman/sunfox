@@ -9,9 +9,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>fox-framework</module>
+        <!--<module>fox-framework</module>
         <module>fox-config</module>
-        <module>fox-discovery</module>
+        <module>fox-discovery</module>-->
         <module>fox-uc</module>
     </modules>
 

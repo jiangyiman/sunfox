@@ -11,6 +11,8 @@ public class UcRoles extends BaseModel {
 
     @Column(name = "role_name")
     private String roleName;
+    @Column(name = "role_code")
+    private String roleCode;
 
     /**
      * 描述
@@ -57,6 +59,14 @@ public class UcRoles extends BaseModel {
      */
     public void setRoleName(String roleName) {
         this.roleName = roleName == null ? null : roleName.trim();
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode( String roleCode ) {
+        this.roleCode = roleCode;
     }
 
     /**

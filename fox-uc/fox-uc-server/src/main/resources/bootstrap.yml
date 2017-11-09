@@ -6,7 +6,7 @@ spring:
     name: sunfox-uc-server
   profiles:
     active: dev
-#  bootstrap:
+#    bootstrap:
 #    enabled: false
 #日志
 logging:
@@ -22,7 +22,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: eureka-dev,swagger-default-dev,uc-database-dev
+      profile: eureka-dev,swagger-default-dev,uc-database-dev,default-database-dev
       uri: http://localhost:9001
 ---
 # 测试环境配置
@@ -31,7 +31,7 @@ spring:
   cloud:
     config:
       name: sunfox-config
-      profile: eureka-dev,swagger-default-dev,uc-database-dev
+      profile: eureka-dev,swagger-default-dev,uc-database-dev,default-database-dev
       uri: http://localhost:9001
 
 

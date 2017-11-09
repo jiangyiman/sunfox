@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "uc_comp_org")
 public class UcCompOrg extends BaseModel {
     @Id
-    @Column(name = "` id`")
     private Long id;
 
     @Column(name = "comp_id")

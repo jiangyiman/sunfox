@@ -1,5 +1,6 @@
 package com.sun.fox.uc.server.handler;
 
+import com.sun.fox.uc.server.model.UcUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
@@ -9,22 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
     @Override
     public void onAuthenticationSuccess( HttpServletRequest request,
-                                         HttpServletResponse response, Authentication authentication) throws IOException,
+                                         HttpServletResponse response, Authentication authentication ) throws IOException,
             ServletException {
         //获得授权后可得到用户信息   可使用SUserService进行数据库操作
-        SysUser userDetails = (SysUser)authentication.getPrincipal();
-       /* Set<SysRole> roles = userDetails.getSysRoles();*/
+        UcUser userDetails = (UcUser) authentication.getPrincipal();
+        /* Set<SysRole> roles = userDetails.getSysRoles();*/
         //输出登录提示信息
-        System.out.println("管理员 " + userDetails.getName() + " 登录");
-
-        System.out.println("IP :"+getIpAddress(request));
-
+        logger.info("管理员 " + userDetails.getUsername() + " 登录");
+        logger.info("IP :" + getIpAddress(request));
         super.onAuthenticationSuccess(request, response, authentication);
     }
 
-    public String getIpAddress(HttpServletRequest request){
+    public String getIpAddress( HttpServletRequest request ) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
