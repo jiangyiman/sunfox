@@ -52,6 +52,11 @@ public class UcUser extends BaseModel {
 
     private Boolean active;
 
+    /**
+     *  有效时间戳
+     */
+    private Long expires;
+
     @Column(name = "create_time")
     private Date createTime;
 
@@ -307,5 +312,13 @@ public class UcUser extends BaseModel {
      */
     public void setLastUser( Long lastUser ) {
         this.lastUser = lastUser;
+    }
+
+    public Long getExpires() {
+        return expires;
+    }
+
+    public void setExpires( Long expires ) {
+        this.expires = expires;
     }
 }

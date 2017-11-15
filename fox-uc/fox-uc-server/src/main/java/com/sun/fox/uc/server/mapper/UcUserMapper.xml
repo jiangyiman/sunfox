@@ -17,6 +17,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="BIT" />
     <result column="active" property="active" jdbcType="BIT" />
+    <result column="expires" property="expires" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="BIGINT" />
     <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />

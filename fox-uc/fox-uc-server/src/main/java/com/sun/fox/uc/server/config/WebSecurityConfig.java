@@ -2,6 +2,7 @@ package com.sun.fox.uc.server.config;
 
 import com.sun.fox.uc.server.handler.CustomLogoutHandler;
 import com.sun.fox.uc.server.handler.LoginSuccessHandler;
+import com.sun.fox.uc.server.security.*;
 import com.sun.fox.uc.server.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * spring security  配置目录
@@ -26,6 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    @Autowired
+    private TokenAuthenticationService tokenAuthenticationService;
+
 
     /**
      *  配置 数据
@@ -34,6 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure( HttpSecurity http ) throws Exception {
+        MyUsernamePasswordAuthenticationFilter upFilter = new MyUsernamePasswordAuthenticationFilter(tokenAuthenticationService);
+        upFilter.setAuthenticationManager(this.authenticationManager());
+        upFilter.setAuthenticationFailureHandler(authenticationFailureHandler());
+        upFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler());
+        //-----支持token的验证
+        AuthenticationWithTokenFilter withTokenFilter = new AuthenticationWithTokenFilter("/user/**");
+        withTokenFilter.setTokenService(tokenAuthenticationService);
         http
                 .authorizeRequests()
                 .antMatchers("/home").permitAll()//访问：/home 无需登录认证权限
@@ -60,7 +73,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
-
         auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
         auth.eraseCredentials(false);
     }
@@ -81,5 +93,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public LoginSuccessHandler loginSuccessHandler() {
         return new LoginSuccessHandler();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler(){
+        String failureUrl = "/.";
+        return new MyAuthenticationFailureHandler(failureUrl);
+    }
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler(){
+        String successfulUrl = "/main";
+        return new MyAuthenticationSuccessHandler(successfulUrl,this.tokenAuthenticationService);
     }
 }

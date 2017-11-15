@@ -1,7 +1,5 @@
 package com.sun.fox.uc.server.model;
 
-import com.sun.fox.uc.server.model.UcRoles;
-import com.sun.fox.uc.server.model.UcUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
