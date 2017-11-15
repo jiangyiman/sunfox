@@ -10,13 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
+/**
+ * 自定义 用户数据获取
+ */
+@Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired  //业务服务类
@@ -38,13 +40,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         } else {
             // 组织用户 目前就两种
         }
-        // SecurityUser实现UserDetails并将SysUser的name映射为username
         SecurityUser seu = new SecurityUser(user, SysRoles);
         return seu;
     }
-    
-   /* public static void main(String[] args){
-        BCryptPasswordEncoder bc=new BCryptPasswordEncoder(4);//将密码加密 可以先设置初始密码：000000
-        System.out.println(bc.encode("111111"));
-    }*/
+
 }

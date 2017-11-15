@@ -1,5 +1,7 @@
 package com.sun.fox.uc.server.model;
 
+import com.sun.fox.uc.server.model.UcRoles;
+import com.sun.fox.uc.server.model.UcUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +34,10 @@ public class SecurityUser extends UcUser implements UserDetails {
         }
     }
 
+    /**
+     *   重写角色模型
+     * @return
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
