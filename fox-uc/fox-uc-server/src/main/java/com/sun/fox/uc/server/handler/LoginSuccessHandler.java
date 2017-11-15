@@ -3,12 +3,16 @@ package com.sun.fox.uc.server.handler;
 import com.sun.fox.uc.server.model.UcUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 登录成功
+ */
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Override
@@ -21,6 +25,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //输出登录提示信息
         logger.info("管理员 " + userDetails.getUsername() + " 登录");
         logger.info("IP :" + getIpAddress(request));
+        // 也可以 session 里面添加数据, 或者记录用户的登录时间 登录ip 一些用户信息采集
         super.onAuthenticationSuccess(request, response, authentication);
     }
 
