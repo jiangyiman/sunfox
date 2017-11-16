@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by muyz on 2017/11/10.
+ *  异常处理返回值 当AjaxRequestMatcher 是否输出
  */
-
 public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     public AjaxAuthenticationEntryPoint() {
+        super();
     }
 
     @Override
-    public void commence( HttpServletRequest request, HttpServletResponse response, AuthenticationException arg2)
+    public void commence( HttpServletRequest request, HttpServletResponse response, AuthenticationException arg2 )
             throws IOException, ServletException {
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
                 "Unauthorized.");

@@ -1,7 +1,7 @@
-package com.sun.fox.uc.server.security;
+package com.sun.fox.uc.server.handler;
 
 /**
- * Created by muyz on 2017/11/9.
+ * MAC 摘要算法 申城token
  */
 
 import com.fasterxml.jackson.core.JsonProcessingException;

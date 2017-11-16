@@ -29,18 +29,18 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername( String userName ) throws UsernameNotFoundException {
         //SysUser对应数据库中的用户表，是最终存储用户和密码的表，可自定义
-        Set<UcRoles> SysRoles = new HashSet<>(0);// 所对应的角色集合
+        Set<UcRoles> sysRoles = new HashSet<>(0);// 所对应的角色集合
         UcUser user = ucUserMapper.getUcUserByUserName(userName);
         if (user == null) {
             throw new UsernameNotFoundException("UserName " + userName + " not found");
         }
         if (UserType.SYS_ADMIN.value().equals(user.getType())) {
             // 系统用户
-            SysRoles = ucRoleUserMapper.getRoleByUserId(user.getId());
+            sysRoles = ucRoleUserMapper.getRoleByUserId(user.getId());
         } else {
             // 组织用户 目前就两种
         }
-        SecurityUser seu = new SecurityUser(user, SysRoles);
+        SecurityUser seu = new SecurityUser(user, sysRoles);
         return seu;
     }
 

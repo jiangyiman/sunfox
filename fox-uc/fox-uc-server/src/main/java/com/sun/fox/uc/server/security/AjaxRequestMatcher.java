@@ -5,7 +5,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by muyz on 2017/11/15.
+ *  判断请求类型 是否是ajax请求 如果是则返回 true  反之 返回 false
  */
 public class AjaxRequestMatcher implements RequestMatcher {
     @Override

@@ -21,6 +21,15 @@ public class SecurityUser extends UcUser implements UserDetails {
         SysRoles = sysRoles;
     }
 
+    public SecurityUser( String userName ) {
+        this.setUsername(userName);
+    }
+
+    public SecurityUser( String userName,String password ) {
+        this.setUsername(userName);
+        this.setPassword(password);
+    }
+
     public SecurityUser( UcUser user, Set<UcRoles> sysRoles ) {
         if (user != null) {
             this.setId(user.getId());
@@ -29,11 +38,13 @@ public class SecurityUser extends UcUser implements UserDetails {
             this.setPassword(user.getPassword());
             this.setCreateTime(user.getCreateTime());
             this.setSysRoles(sysRoles);
+            this.setActive(user.getActive());
         }
     }
 
     /**
-     *   重写角色模型
+     * 重写角色模型
+     *
      * @return
      */
     @Override

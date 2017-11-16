@@ -1,7 +1,7 @@
 package com.sun.fox.uc.server.security;
 
-import com.example.demo.user.MyUserDetails;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.fox.uc.server.model.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by muyz on 2017/11/13.
+ *
  */
-public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    public MyUsernamePasswordAuthenticationFilter(TokenAuthenticationService tokenAuthenticationService) {
+    public CustomUsernamePasswordAuthenticationFilter( TokenAuthenticationService tokenAuthenticationService) {
         super();
         this.tokenService = tokenAuthenticationService;
     }
@@ -26,17 +26,17 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
 
     @Override
     public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        MyUserDetails user = null;
+        SecurityUser user = null;
         if ("application/x-www-form-urlencoded".equals(request.getHeader("content-type"))){
-            user = new MyUserDetails(request.getParameter("username"),request.getParameter("password"));
+            user = new SecurityUser(request.getParameter("username"),request.getParameter("password"));
         } else {
             try {
-                user = new ObjectMapper().readValue(request.getInputStream(), MyUserDetails.class);
+                user = new ObjectMapper().readValue(request.getInputStream(), SecurityUser.class);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        //-----组织验证用的token
+        //组织验证用的token
         final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken(
                 user.getUsername(), user.getPassword());
         return getAuthenticationManager().authenticate(loginToken);

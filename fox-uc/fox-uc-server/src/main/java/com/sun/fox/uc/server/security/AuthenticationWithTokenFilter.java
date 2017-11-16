@@ -18,25 +18,24 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by muyz on 2017/11/7.
+ * TOKEN 处理
  */
-
 public class AuthenticationWithTokenFilter extends AbstractAuthenticationProcessingFilter {
 
-    private final  Logger log = LoggerFactory.getLogger(AuthenticationWithTokenFilter.class);
+    private final Logger log = LoggerFactory.getLogger(AuthenticationWithTokenFilter.class);
 
     private TokenAuthenticationService tokenService;
 
-    public AuthenticationWithTokenFilter(String defaultFilterProcessesUrl) {
+    public AuthenticationWithTokenFilter( String defaultFilterProcessesUrl ) {
         super(defaultFilterProcessesUrl);
     }
 
-    public void setTokenService(TokenAuthenticationService tokenAuthenticationService){
+    public void setTokenService( TokenAuthenticationService tokenAuthenticationService ) {
         this.tokenService = tokenAuthenticationService;
     }
 
     @Override
-    public void doFilter( ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter( ServletRequest request, ServletResponse response, FilterChain chain ) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
@@ -45,11 +44,11 @@ public class AuthenticationWithTokenFilter extends AbstractAuthenticationProcess
 
             return;
         }
-        HttpServletRequest httpRequest = (HttpServletRequest)request;
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpSession session = httpRequest.getSession(true);
-        SecurityContext sc = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
+        SecurityContext sc = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 
-        if (sc!=null && sc.getAuthentication()!=null) {
+        if (sc != null && sc.getAuthentication() != null) {
             //----如果从session取登录的用户信息成功，就以此用户信息写入验证，
             Authentication authentication = sc.getAuthentication();
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -63,7 +62,7 @@ public class AuthenticationWithTokenFilter extends AbstractAuthenticationProcess
     }
 
     @Override
-    public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response ) throws AuthenticationException, IOException, ServletException {
         return null;
     }
 }

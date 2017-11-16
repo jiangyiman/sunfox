@@ -6,11 +6,14 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-public class MyAuthentication implements Authentication {
+/**
+ * 用户的登录信息
+ */
+public class CustomAuthentication implements Authentication {
     private boolean authenticated = false;
     private SecurityUser userDetails;
 
-    public MyAuthentication(boolean authenticated, SecurityUser userDetails) {
+    public CustomAuthentication( boolean authenticated, SecurityUser userDetails ) {
         this.authenticated = authenticated;
         this.userDetails = userDetails;
     }
@@ -41,7 +44,7 @@ public class MyAuthentication implements Authentication {
     }
 
     @Override
-    public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+    public void setAuthenticated( boolean isAuthenticated ) throws IllegalArgumentException {
         this.authenticated = isAuthenticated;
     }
 
