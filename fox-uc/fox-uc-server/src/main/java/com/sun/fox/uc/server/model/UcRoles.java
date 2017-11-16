@@ -19,7 +19,7 @@ public class UcRoles extends BaseModel {
      */
     private String describe;
 
-    private Boolean active;
+    private Integer active;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -90,14 +90,14 @@ public class UcRoles extends BaseModel {
     /**
      * @return active
      */
-    public Boolean getActive() {
+    public Integer getActive() {
         return active;
     }
 
     /**
      * @param active
      */
-    public void setActive(Boolean active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 

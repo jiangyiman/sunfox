@@ -48,9 +48,9 @@ public class UcUser extends BaseModel {
     /**
      * 1:男 2女
      */
-    private Boolean sex;
+    private Integer sex;
 
-    private Boolean active;
+    private Integer active;
 
     /**
      *  有效时间戳
@@ -231,7 +231,7 @@ public class UcUser extends BaseModel {
      *
      * @return sex - 1:男 2女
      */
-    public Boolean getSex() {
+    public Integer getSex() {
         return sex;
     }
 
@@ -240,21 +240,21 @@ public class UcUser extends BaseModel {
      *
      * @param sex 1:男 2女
      */
-    public void setSex( Boolean sex ) {
+    public void setSex( Integer sex ) {
         this.sex = sex;
     }
 
     /**
      * @return active
      */
-    public Boolean getActive() {
+    public Integer getActive() {
         return active;
     }
 
     /**
      * @param active
      */
-    public void setActive( Boolean active ) {
+    public void setActive( Integer active ) {
         this.active = active;
     }
 

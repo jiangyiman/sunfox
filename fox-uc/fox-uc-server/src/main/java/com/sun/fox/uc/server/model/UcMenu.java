@@ -34,6 +34,17 @@ public class UcMenu extends BaseModel {
     private Boolean menuType;
 
     /**
+     *  菜单logo
+     */
+    @Column(name = "menu_logo")
+    private String  menuLogo;
+
+    /**
+     *  菜单排序
+     */
+    private Integer sequence;
+
+    /**
      * 1 启用 0 禁用
      */
     private Boolean active;
@@ -52,6 +63,22 @@ public class UcMenu extends BaseModel {
 
     @Column(name = "last_user")
     private Long lastUser;
+
+    public String getMenuLogo() {
+        return menuLogo;
+    }
+
+    public void setMenuLogo( String menuLogo ) {
+        this.menuLogo = menuLogo;
+    }
+
+    public Integer getSequence() {
+        return sequence;
+    }
+
+    public void setSequence( Integer sequence ) {
+        this.sequence = sequence;
+    }
 
     /**
      * @return id

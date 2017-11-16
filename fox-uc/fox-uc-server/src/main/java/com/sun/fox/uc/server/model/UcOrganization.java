@@ -18,7 +18,7 @@ public class UcOrganization extends BaseModel {
     @Column(name = "parent_id")
     private Integer parentId;
 
-    private Boolean active;
+    private Integer active;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -91,14 +91,14 @@ public class UcOrganization extends BaseModel {
     /**
      * @return active
      */
-    public Boolean getActive() {
+    public Integer getActive() {
         return active;
     }
 
     /**
      * @param active
      */
-    public void setActive(Boolean active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 
