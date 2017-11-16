@@ -1,4 +1,4 @@
-package com.sun.fox.uc.server.config;
+package com.sun.fox.uc.server.security;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * 决策器- 更细颗粒的访问权限操作
+ * 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 ;做最终的访问控制决定
  */
 @Component
 public class CustomAccessDecisionManager implements AccessDecisionManager {

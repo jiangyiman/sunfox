@@ -13,16 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *
+ * 验证登录名和密码是否匹配
  */
 public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    @Autowired
+    private TokenAuthenticationService tokenService;
 
     public CustomUsernamePasswordAuthenticationFilter( TokenAuthenticationService tokenAuthenticationService) {
         super();
         this.tokenService = tokenAuthenticationService;
     }
-    @Autowired
-    private TokenAuthenticationService tokenService;
 
     @Override
     public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
