@@ -15,12 +15,12 @@ import java.io.IOException;
 /**
  * 验证登录名和密码是否匹配
  */
-public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Autowired
     private TokenAuthenticationService tokenService;
 
-    public CustomUsernamePasswordAuthenticationFilter( TokenAuthenticationService tokenAuthenticationService) {
+    public CustomAuthenticationFilter( TokenAuthenticationService tokenAuthenticationService) {
         super();
         this.tokenService = tokenAuthenticationService;
     }

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ *
  * TOKEN 处理
  */
 public class AuthenticationWithTokenFilter extends AbstractAuthenticationProcessingFilter {
@@ -53,7 +54,6 @@ public class AuthenticationWithTokenFilter extends AbstractAuthenticationProcess
             Authentication authentication = sc.getAuthentication();
             SecurityContextHolder.getContext().setAuthentication(authentication);
             chain.doFilter(request, response);
-
         } else {
             //-----没有session的，从头"x-auth-token"获得token，通过算法从token获取用户信息，达到验证的目的
             SecurityContextHolder.getContext().setAuthentication(tokenService.getAuthentication(httpRequest));

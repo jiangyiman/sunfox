@@ -28,7 +28,6 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
         while (ite.hasNext()) {
             ConfigAttribute ca = ite.next();
             String needRole = ca.getAttribute();
-            //String needRole = ((SecurityConfig) ca).getAttribute() 可自定义 扩展用权限定义
             for (GrantedAuthority ga : authentication.getAuthorities()) {
                 if (needRole.trim().equals(ga.getAuthority().trim())) {
                     return;

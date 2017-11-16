@@ -9,11 +9,11 @@
     <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
     <result column="menu_url" property="menuUrl" jdbcType="VARCHAR" />
     <result column="menu_code" property="menuCode" jdbcType="VARCHAR" />
-    <result column="menu_type" property="menuType" jdbcType="BIT" />
-    <result column="menu_logo" property="menuType" jdbcType="Integer" />
-    <result column="sequence" property="sequence" jdbcType="Integer" />
+    <result column="menu_type" property="menuType" jdbcType="VARCHAR" />
+    <result column="menu_logo" property="menuType" jdbcType="VARCHAR" />
+    <result column="sequence" property="sequence" jdbcType="BIGINT" />
     <result column="active" property="active" jdbcType="Integer" />
-    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="Integer" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="BIGINT" />
     <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />

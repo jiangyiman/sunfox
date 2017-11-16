@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -28,6 +29,9 @@ import org.springframework.security.web.servletapi.SecurityContextHolderAwareReq
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CustomFilterSecurityInterceptor customFilterSecurityInterceptor;
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -44,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure( HttpSecurity http ) throws Exception {
-        CustomUsernamePasswordAuthenticationFilter upFilter = new CustomUsernamePasswordAuthenticationFilter(tokenAuthenticationService);
+        CustomAuthenticationFilter upFilter = new CustomAuthenticationFilter(tokenAuthenticationService);
         upFilter.setAuthenticationManager(this.authenticationManager());
         upFilter.setAuthenticationFailureHandler(authenticationFailureHandler());
         upFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler());
@@ -52,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         AuthenticationWithTokenFilter withTokenFilter = new AuthenticationWithTokenFilter("/user/**");
         withTokenFilter.setTokenService(tokenAuthenticationService);
         http
+                .addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)//在正确的位置添加我们自定义的过滤器
                 .authorizeRequests()
                 .antMatchers("/main").permitAll()//访问：/home 无需登录认证权限
                 .anyRequest().authenticated() //其他所有资源都需要认证，登陆后访问

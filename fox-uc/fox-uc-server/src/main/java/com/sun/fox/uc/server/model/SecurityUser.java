@@ -87,6 +87,6 @@ public class SecurityUser extends UcUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return super.getActive() == Boolean.TRUE ? Boolean.TRUE : Boolean.FALSE;
+        return super.getActive().equals(1)? Boolean.TRUE : Boolean.FALSE;
     }
 }

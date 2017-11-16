@@ -1,6 +1,7 @@
 package com.sun.fox.uc.server.model;
 
 import com.sun.fox.mybatis.base.model.BaseModel;
+
 import javax.persistence.*;
 
 @Table(name = "uc_role_menu")
@@ -14,6 +15,28 @@ public class UcRoleMenu extends BaseModel {
     @Column(name = "role_id")
     private Long roleId;
 
+    @Column(name = "menu_url")
+    private String menuUrl;
+
+    @Column(name = "role_code")
+    private String roleCode;
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl( String menuUrl ) {
+        this.menuUrl = menuUrl;
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode( String roleCode ) {
+        this.roleCode = roleCode;
+    }
+
     /**
      * @return id
      */
@@ -24,7 +47,7 @@ public class UcRoleMenu extends BaseModel {
     /**
      * @param id
      */
-    public void setId(Long id) {
+    public void setId( Long id ) {
         this.id = id;
     }
 
@@ -38,7 +61,7 @@ public class UcRoleMenu extends BaseModel {
     /**
      * @param menuId
      */
-    public void setMenuId(Long menuId) {
+    public void setMenuId( Long menuId ) {
         this.menuId = menuId;
     }
 
@@ -52,7 +75,7 @@ public class UcRoleMenu extends BaseModel {
     /**
      * @param roleId
      */
-    public void setRoleId(Long roleId) {
+    public void setRoleId( Long roleId ) {
         this.roleId = roleId;
     }
 }
