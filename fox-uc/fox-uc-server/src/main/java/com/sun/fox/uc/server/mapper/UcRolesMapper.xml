@@ -9,7 +9,7 @@
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
     <result column="describe" property="describe" jdbcType="VARCHAR" />
-    <result column="active" property="active" jdbcType="BIT" />
+    <result column="active" property="active" jdbcType="Integer" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="BIGINT" />
     <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />

@@ -15,8 +15,8 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="BIT" />
-    <result column="active" property="active" jdbcType="BIT" />
+    <result column="sex" property="sex" jdbcType="Integer" />
+    <result column="active" property="active" jdbcType="Integer" />
     <result column="expires" property="expires" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="BIGINT" />

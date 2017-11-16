@@ -12,7 +12,7 @@
     <result column="menu_type" property="menuType" jdbcType="BIT" />
     <result column="menu_logo" property="menuType" jdbcType="Integer" />
     <result column="sequence" property="sequence" jdbcType="Integer" />
-    <result column="active" property="active" jdbcType="BIT" />
+    <result column="active" property="active" jdbcType="Integer" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="BIGINT" />
