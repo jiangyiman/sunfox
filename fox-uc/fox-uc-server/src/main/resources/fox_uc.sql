@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2017-11-15 18:37:22
+Date: 2017-11-17 14:23:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,7 +62,7 @@ CREATE TABLE `uc_company` (
   `comp_address` varchar(255) DEFAULT NULL COMMENT '联系地址',
   `comp_logo` varchar(255) DEFAULT NULL COMMENT '组织图标',
   `comp_url` varchar(255) DEFAULT NULL COMMENT '组织主页',
-  `active` bit(1) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `create_user` bigint(11) DEFAULT NULL,
   `last_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -79,7 +79,7 @@ CREATE TABLE `uc_company` (
 -- ----------------------------
 DROP TABLE IF EXISTS `uc_comp_org`;
 CREATE TABLE `uc_comp_org` (
-  ` id` bigint(11) NOT NULL,
+  ` id` bigint(11) NOT NULL AUTO_INCREMENT,
   `comp_id` bigint(11) DEFAULT NULL,
   `org_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (` id`)
@@ -98,19 +98,29 @@ CREATE TABLE `uc_menu` (
   `menu_name` varchar(32) DEFAULT NULL COMMENT '菜单名称',
   `menu_url` varchar(64) DEFAULT NULL COMMENT '菜单地址',
   `menu_code` varchar(16) DEFAULT NULL COMMENT '菜单编码',
-  `menu_type` bit(2) DEFAULT NULL COMMENT '菜单类型，',
-  `active` bit(1) DEFAULT NULL COMMENT '1 启用 0 禁用',
+  `menu_logo` varchar(128) DEFAULT NULL COMMENT '菜单图标',
+  `menu_type` tinyint(2) DEFAULT NULL COMMENT '菜单类型，1: 菜单，2：按钮',
+  `sequence` int(2) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL COMMENT '1 启用 0 禁用',
   `parent_id` bigint(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `create_user` bigint(11) DEFAULT NULL,
   `last_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `last_user` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of uc_menu
 -- ----------------------------
+INSERT INTO `uc_menu` VALUES ('1', '系统管理', '/os', 'sys_os', null, '1', '1', '1', '0', '2017-11-16 16:26:13', null, '2017-11-16 16:26:13', null);
+INSERT INTO `uc_menu` VALUES ('2', '菜单管理', '/os/menu', 'sys_menus', null, '1', '2', '1', '1', '2017-11-16 16:26:20', null, '2017-11-16 16:26:20', null);
+INSERT INTO `uc_menu` VALUES ('3', '角色管理', '/os/roles', 'sys_roles', null, '1', '3', '1', '1', '2017-11-16 16:26:28', null, '2017-11-16 16:26:28', null);
+INSERT INTO `uc_menu` VALUES ('4', '用户管理', '/os/users', 'sys_users', null, '1', '4', '1', '1', '2017-11-16 16:26:39', null, '2017-11-16 16:26:39', null);
+INSERT INTO `uc_menu` VALUES ('5', '权限管理', '/os/auths', 'sys_auths', null, '1', '5', '1', '1', '2017-11-16 16:26:43', null, '2017-11-16 16:26:43', null);
+INSERT INTO `uc_menu` VALUES ('6', '字典管理', '/os/dicts', 'sys_dicts', null, '1', '6', '1', '1', '2017-11-16 16:26:52', null, '2017-11-16 16:26:52', null);
+INSERT INTO `uc_menu` VALUES ('7', '日志管理', '/logs', 'logs_os', null, '1', '2', '1', '0', '2017-11-16 16:26:59', null, '2017-11-16 16:26:59', null);
+INSERT INTO `uc_menu` VALUES ('8', '数据库日志', '/log/datas', 'logs_data', null, '1', '1', '1', '7', '2017-11-16 15:16:27', null, '2017-11-16 15:16:27', null);
 
 -- ----------------------------
 -- Table structure for uc_organization
@@ -120,8 +130,8 @@ CREATE TABLE `uc_organization` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `org_name` varchar(255) DEFAULT NULL,
   `org_code` varchar(255) DEFAULT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `active` bit(1) DEFAULT NULL,
+  `parent_id` bigint(11) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `create_user` bigint(11) DEFAULT NULL,
   `last_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -160,26 +170,27 @@ CREATE TABLE `uc_roles` (
   `role_name` varchar(32) DEFAULT NULL,
   `role_code` varchar(16) DEFAULT NULL COMMENT '角色编码',
   `describe` varchar(128) DEFAULT NULL COMMENT '描述',
-  `active` bit(1) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `create_user` bigint(11) DEFAULT NULL,
   `last_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `last_user` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of uc_roles
 -- ----------------------------
-INSERT INTO `uc_roles` VALUES ('1', '系统管理员', 'ADMIN', '系统', '', '2017-11-09 10:24:55', '1', '2017-11-09 10:24:55', '1');
-INSERT INTO `uc_roles` VALUES ('2', '积分管理员', 'INTEGRAL', '积分', '', '2017-11-09 10:24:59', '1', '2017-11-09 10:24:59', '1');
+INSERT INTO `uc_roles` VALUES ('1', '系统管理员', 'ROLE_ADMIN', '系统', '1', '2017-11-16 14:53:33', '1', '2017-11-16 14:53:33', '1');
+INSERT INTO `uc_roles` VALUES ('2', '积分管理员', 'ROLE_INTEGRAL', '积分', '1', '2017-11-16 14:53:43', '1', '2017-11-16 14:53:43', '1');
+INSERT INTO `uc_roles` VALUES ('3', '日志管理远', 'ROLE_LOGS', '日志', '1', '2017-11-16 15:18:07', '1', '2017-11-16 15:18:07', '1');
 
 -- ----------------------------
 -- Table structure for uc_role_comp
 -- ----------------------------
 DROP TABLE IF EXISTS `uc_role_comp`;
 CREATE TABLE `uc_role_comp` (
-  `id` bigint(11) NOT NULL,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `role_id` bigint(11) DEFAULT NULL,
   `comp_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -196,13 +207,25 @@ DROP TABLE IF EXISTS `uc_role_menu`;
 CREATE TABLE `uc_role_menu` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `menu_id` bigint(11) DEFAULT NULL,
+  `menu_url` varchar(64) DEFAULT NULL,
   `role_id` bigint(11) DEFAULT NULL,
+  `role_code` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of uc_role_menu
 -- ----------------------------
+INSERT INTO `uc_role_menu` VALUES ('1', '1', '/os', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('2', '2', '/os/menu', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('3', '3', '/os/roles', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('4', '4', '/os/users', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('5', '5', '/os/auths', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('6', '6', '/os/dicts', '2', 'ROLE_INTEGRAL');
+INSERT INTO `uc_role_menu` VALUES ('7', '7', '/logs', '3', 'ROLE_LOGS');
+INSERT INTO `uc_role_menu` VALUES ('8', '8', '/log/datas', '3', 'ROLE_LOGS');
+INSERT INTO `uc_role_menu` VALUES ('9', '1', '/os\r\n', '3', 'ROLE_LOGS');
+INSERT INTO `uc_role_menu` VALUES ('10', '2', '/os/menu', '3', 'ROLE_LOGS');
 
 -- ----------------------------
 -- Table structure for uc_role_org
@@ -251,8 +274,8 @@ CREATE TABLE `uc_user` (
   `email` varchar(32) DEFAULT NULL,
   `type` varchar(5) NOT NULL COMMENT '用户类别1:系统用户；2:组织用户',
   `phone` varchar(11) DEFAULT NULL,
-  `sex` bit(1) DEFAULT NULL COMMENT '1:男 2女',
-  `active` bit(1) DEFAULT NULL,
+  `sex` int(1) DEFAULT NULL COMMENT '1:男 2女',
+  `active` int(1) DEFAULT NULL,
   `expires` bigint(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `create_user` bigint(11) DEFAULT NULL,
@@ -264,7 +287,7 @@ CREATE TABLE `uc_user` (
 -- ----------------------------
 -- Records of uc_user
 -- ----------------------------
-INSERT INTO `uc_user` VALUES ('1', '10001', 'admin', '$2a$04$/BriqZKFbg5ko9gRQbcG4u4.ZWDqbvhRl/tL5gqVyN99uv93W151O', 'XTR95', '10001', null, null, '1', null, null, null, null, '2017-11-09 13:35:26', null, '2017-11-09 13:35:26', null);
+INSERT INTO `uc_user` VALUES ('1', '10001', 'admin', '$2a$04$/BriqZKFbg5ko9gRQbcG4u4.ZWDqbvhRl/tL5gqVyN99uv93W151O', 'XTR95', '10001', null, null, '1', null, null, '1', null, '2017-11-16 10:37:39', null, '2017-11-16 10:37:39', null);
 
 -- ----------------------------
 -- Table structure for uc_user_org
