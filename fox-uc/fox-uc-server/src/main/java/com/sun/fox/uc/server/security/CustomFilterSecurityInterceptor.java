@@ -13,23 +13,21 @@ import javax.servlet.*;
 import java.io.IOException;
 
 
-@Component
+//@Component
 public class CustomFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 
     @Autowired
-    private FilterInvocationSecurityMetadataSource securityMetadataSource;
+    private CustomSecurityMetadataSource customSecurityMetadataSource;
 
     @Autowired
-    private CustomAccessDecisionManager myAccessDecisionManager;
+    private CustomAccessDecisionManager customAccessDecisionManager;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
     @Override
     public void init( FilterConfig filterConfig ) throws ServletException {
-        super.setAuthenticationManager(authenticationManager);
-        super.setAccessDecisionManager(myAccessDecisionManager);
+       // super.setAuthenticationManager(authenticationManager);
+        super.setAccessDecisionManager(customAccessDecisionManager);
     }
 
     @Override
@@ -60,6 +58,6 @@ public class CustomFilterSecurityInterceptor extends AbstractSecurityInterceptor
 
     @Override
     public SecurityMetadataSource obtainSecurityMetadataSource() {
-        return this.securityMetadataSource;
+        return this.customSecurityMetadataSource;
     }
 }

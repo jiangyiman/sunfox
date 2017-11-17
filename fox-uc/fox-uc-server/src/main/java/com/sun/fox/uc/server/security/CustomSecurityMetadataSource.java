@@ -2,6 +2,7 @@ package com.sun.fox.uc.server.security;
 
 import com.sun.fox.uc.server.mapper.UcRoleMenuMapper;
 import com.sun.fox.uc.server.model.UcRoleMenu;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -15,7 +16,7 @@ import java.util.*;
  * 资源源数据定义，将所有的资源和权限对应关系建立起来，即定义某一资源可以被哪些角色访问
  */
 @Component
-public class CustomSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
+public class CustomSecurityMetadataSource implements FilterInvocationSecurityMetadataSource , InitializingBean {
 
 
     /**
@@ -55,5 +56,10 @@ public class CustomSecurityMetadataSource implements FilterInvocationSecurityMet
     @Override
     public boolean supports( Class<?> aClass ) {
         return Boolean.TRUE;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }

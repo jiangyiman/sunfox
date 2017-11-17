@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         AuthenticationWithTokenFilter withTokenFilter = new AuthenticationWithTokenFilter("/user/**");
         withTokenFilter.setTokenService(tokenAuthenticationService);
         http
-                .addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)//在正确的位置添加我们自定义的过滤器
+               // .addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)//在正确的位置添加我们自定义的过滤器
                 .authorizeRequests()
                 .antMatchers("/main").permitAll()//访问：/home 无需登录认证权限
                 .anyRequest().authenticated() //其他所有资源都需要认证，登陆后访问
