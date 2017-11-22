@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         AuthenticationWithTokenFilter withTokenFilter = new AuthenticationWithTokenFilter("/user/**");
         withTokenFilter.setTokenService(tokenAuthenticationService);
         http
-               // .addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)//在正确的位置添加我们自定义的过滤器
+                .addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)//在正确的位置添加我们自定义的过滤器
                 .authorizeRequests()
                 .antMatchers("/main").permitAll()//访问：/home 无需登录认证权限
                 .anyRequest().authenticated() //其他所有资源都需要认证，登陆后访问
@@ -72,14 +72,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()//登录后记住用户，下次自动登录,数据库中必须存在名为persistent_logins的表
                 .rememberMe()
-                .tokenValiditySeconds(1209600)
-                .and()
+                .tokenValiditySeconds(1209600);
+                /*.and()
                 .exceptionHandling()//异常处理机制
                 .defaultAuthenticationEntryPointFor(new AjaxAuthenticationEntryPoint(), new AjaxRequestMatcher()).and()
                 .csrf()
                 .disable()
                 .addFilterBefore(upFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(withTokenFilter, SecurityContextHolderAwareRequestFilter.class);
+                .addFilterAfter(withTokenFilter, SecurityContextHolderAwareRequestFilter.class);*/
 
     }
 

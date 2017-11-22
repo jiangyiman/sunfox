@@ -25,7 +25,7 @@ public class SecurityUser extends UcUser implements UserDetails {
         this.setUsername(userName);
     }
 
-    public SecurityUser( String userName,String password ) {
+    public SecurityUser( String userName, String password ) {
         this.setUsername(userName);
         this.setPassword(password);
     }
@@ -70,16 +70,19 @@ public class SecurityUser extends UcUser implements UserDetails {
         return super.getUsername();
     }
 
+    //账户没有过期
     @Override
     public boolean isAccountNonExpired() {
         return Boolean.TRUE;
     }
 
+    //账户没有被锁定
     @Override
     public boolean isAccountNonLocked() {
         return Boolean.TRUE;
     }
 
+    //证书没有过期
     @Override
     public boolean isCredentialsNonExpired() {
         return Boolean.TRUE;
@@ -87,6 +90,6 @@ public class SecurityUser extends UcUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return super.getActive().equals(1)? Boolean.TRUE : Boolean.FALSE;
+        return super.getActive().equals(1) ? Boolean.TRUE : Boolean.FALSE;
     }
 }

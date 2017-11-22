@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 /**
  * 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 ;做最终的访问控制决定
+ * 貌似没有起作用
  */
 @Component
 public class CustomAccessDecisionManager implements AccessDecisionManager {

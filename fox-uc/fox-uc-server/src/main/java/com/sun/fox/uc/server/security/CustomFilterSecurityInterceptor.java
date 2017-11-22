@@ -4,30 +4,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.web.FilterInvocation;
-import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import java.io.IOException;
 
 
-//@Component
+@Component
 public class CustomFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 
     @Autowired
     private CustomSecurityMetadataSource customSecurityMetadataSource;
 
-    @Autowired
-    private CustomAccessDecisionManager customAccessDecisionManager;
 
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
+    /* private CustomAccessDecisionManager customAccessDecisionManager;*/
+    @Autowired
+    public void setCustomAccessDecisionManager( CustomAccessDecisionManager customAccessDecisionManager ) {
+        //super.setAccessDecisionManager(customAccessDecisionManager);
+        this.setAccessDecisionManager(customAccessDecisionManager);
+    }
+
+
     @Override
     public void init( FilterConfig filterConfig ) throws ServletException {
-       // super.setAuthenticationManager(authenticationManager);
-        super.setAccessDecisionManager(customAccessDecisionManager);
+      /* // super.setAuthenticationManager(authenticationManager);
+        */
     }
 
     @Override
