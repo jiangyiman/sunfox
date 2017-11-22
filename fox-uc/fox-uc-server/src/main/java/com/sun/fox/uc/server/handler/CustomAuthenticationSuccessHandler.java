@@ -43,7 +43,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess( HttpServletRequest request, HttpServletResponse response, Authentication authentication ) throws IOException, ServletException {
         //----这里只要一个用户名即可
-        final SecurityUser authenticatedUser = new SecurityUser(authentication.getName());
+
+        final SecurityUser authenticatedUser = (SecurityUser) authentication.getPrincipal();
         final CustomAuthentication userAuthentication = new CustomAuthentication(true, authenticatedUser);
         //-----实际在向response的headers添加一个认证信息token
         String token = tokenService.addAuthentication(response, userAuthentication);

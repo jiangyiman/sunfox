@@ -8,6 +8,7 @@ import java.util.Collection;
 
 /**
  * 用户的登录信息
+ * 和用户权限信息
  */
 public class CustomAuthentication implements Authentication {
     private boolean authenticated = false;
@@ -20,7 +21,7 @@ public class CustomAuthentication implements Authentication {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return userDetails.getAuthorities();
     }
 
     @Override
@@ -50,6 +51,6 @@ public class CustomAuthentication implements Authentication {
 
     @Override
     public String getName() {
-        return userDetails.getUsername();
+        return userDetails.getNikeName();
     }
 }

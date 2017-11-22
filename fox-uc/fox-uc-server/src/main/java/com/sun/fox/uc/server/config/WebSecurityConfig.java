@@ -72,14 +72,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()//登录后记住用户，下次自动登录,数据库中必须存在名为persistent_logins的表
                 .rememberMe()
-                .tokenValiditySeconds(1209600);
-                /*.and()
+                .tokenValiditySeconds(1209600)
+                .and()
                 .exceptionHandling()//异常处理机制
                 .defaultAuthenticationEntryPointFor(new AjaxAuthenticationEntryPoint(), new AjaxRequestMatcher()).and()
                 .csrf()
                 .disable()
                 .addFilterBefore(upFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(withTokenFilter, SecurityContextHolderAwareRequestFilter.class);*/
+                .addFilterAfter(withTokenFilter, SecurityContextHolderAwareRequestFilter.class);
 
     }
 

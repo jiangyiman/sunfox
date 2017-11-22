@@ -18,18 +18,18 @@ public class CustomFilterSecurityInterceptor extends AbstractSecurityInterceptor
     private CustomSecurityMetadataSource customSecurityMetadataSource;
 
 
-    /* private CustomAccessDecisionManager customAccessDecisionManager;*/
+    /**
+     *   避免 启动异常
+     * @param customAccessDecisionManager
+     */
     @Autowired
     public void setCustomAccessDecisionManager( CustomAccessDecisionManager customAccessDecisionManager ) {
-        //super.setAccessDecisionManager(customAccessDecisionManager);
         this.setAccessDecisionManager(customAccessDecisionManager);
     }
 
 
     @Override
     public void init( FilterConfig filterConfig ) throws ServletException {
-      /* // super.setAuthenticationManager(authenticationManager);
-        */
     }
 
     @Override
