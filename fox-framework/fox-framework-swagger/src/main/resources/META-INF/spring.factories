@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.sun.fox.fk.swagger.SwaggerAutoInitBean
