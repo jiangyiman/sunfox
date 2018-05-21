@@ -44,3 +44,4 @@ Thumbs.db
 # Package Files #
 *.war
 *.ear
+*.iml

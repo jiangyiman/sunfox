@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: Server-Eureka
+  profiles:
+    active: dev
+##########
+
+---
+spring:
+  profiles: dev,demo,uat
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+      preferred-networks:
+        - 192.168
+server:
+  port: 8761   # 注册服务的端口号
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/      # 将自己注册到这个Eureka上面去
+
+---
+######### 集群配置 #######
+spring:
+  profiles: node1                                 # 指定profile=peer1
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+      preferred-networks:
+        - 172.168
+        - 10.0.0.0
+  application:
+    name: Eureka-Server1
+server:
+  port: 8761   # 注册服务的端口号
+eureka:
+  #server:
+  #  enable-self-preservation: false
+  instance:
+    hostname: 101.132.65.208                               # 指定当profile=peer1时，主机名
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://node2:${server.port}/eureka/      # 将自己注册到peer2这个Eureka上面去

@@ -9,21 +9,7 @@
             fox-framework-commons # 帮助类  建议每个项目都引用   
             fox-framework-mybatis # 操作数据库插件   
             fox-framework-swagger # api接口生成工具   
-            fox-framework-pay     # 第三方快捷支付 如微信，支付宝   
-        fox-demo:9095  测试模块  
-            fox-demo-api # 测试demoapi   
-            fox-demo-server # 测试demoserver  服务
-        fox-oauth:9098  单点登录
-        fox-member:9096 会员系统
-        fox-uc: 账户权限系统
-            fox-uc-server:9987
-            fox-uc-web:9986
-            fox-uc-api: 
          
-包路径  
-    com.sun.fox.uc.server ==>  fox-uc-server
-    com.sun.fox.uc.api ==>  fox-uc-api
-    com.sun.fox.uc.web ==>  fox-uc-web      
 ------------------------------------------------------------------------------------
 
 RestAPI 推荐风格

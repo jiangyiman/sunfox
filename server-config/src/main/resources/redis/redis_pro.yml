@@ -1,0 +1,31 @@
+redis:
+  cache:
+    enable: true
+    host: 192.168.0.133
+    port: 6379
+    password: ydtlove
+    maxIdle:  50
+    maxTotal: 50
+    database: 1
+    maxWaitMillis: 1000
+    testOnBorrow: true
+  sequence:
+    enable: true
+    host: 192.168.0.133
+    port: 6379
+    password: ydtlove
+    maxIdle:  50
+    maxTotal: 50
+    database: 7
+    maxWaitMillis: 1000
+    testOnBorrow: true
+  lock:
+    enable: true
+    host: 192.168.0.133
+    port: 6379
+    password: ydtlove
+    maxIdle:  50
+    maxTotal: 50
+    database: 8
+    maxWaitMillis: 1000
+    testOnBorrow: true
