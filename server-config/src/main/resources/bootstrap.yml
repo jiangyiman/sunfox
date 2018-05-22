@@ -2,14 +2,14 @@ server:
   port: 9001
 spring:
   application:
-    name: Server-Config
+    name: server-config
   profiles:
     active:
     - dev
     - native
   cloud:
     config:
-      name: Server-Config
+      name: server-config
       enabled: false
       server:
         health:

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: server-eureka
+    name: server-eureka-slave
   profiles:
     active: dev
 ##########
@@ -16,7 +16,7 @@ spring:
       preferred-networks:
         - 192.168
 server:
-  port: 8761   # 注册服务的端口号
+  port: 8762   # 注册服务的端口号
 eureka:
   instance:
     hostname: localhost
